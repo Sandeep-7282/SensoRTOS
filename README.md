@@ -62,7 +62,7 @@ Tasks/
 
 ## 📸 Demo 
 
-> ![image](https://github.com/user-attachments/assets/1ea52915-6e50-49ca-80fb-91f33a15ebe0)
+> <img  alt="Embedded Dev" width="300" height="200" src="https://github.com/user-attachments/assets/1ea52915-6e50-49ca-80fb-91f33a15ebe0">
 
 
 ---
