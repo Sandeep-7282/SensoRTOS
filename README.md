@@ -15,24 +15,26 @@
 
 ---
 
-## 🧱 Architecture Overview
+## 🧱 Project Structure Overview
 
-main.c
-├── Initializes FreeRTOS
-├── Creates & starts all tasks
+SensoRTOS/
+└── core/
+    └── src/
+        ├── main.c                      # Initializes FreeRTOS, creates & starts tasks
 
-Drivers/
-├── uart-driver.c/.h → UART RX/TX via PA9/PA10
-├── delay.c/.h → delay_us using TIM1
-├── dht22-driver.c/.h → DHT22 bit-level communication
-├── hc_sr04-driver.c/.h → HC-SR04 distance measurement
-└── ssd1306-i2c-driver.c/.h → OLED via I2C (bare-metal)
+        # Drivers (Bare-metal)
+        ├── uart-driver.c/.h            # UART RX/TX using PA9/PA10
+        ├── delay.c/.h                  # Microsecond delay using TIM1
+        ├── dht22-driver.c/.h           # DHT22 temperature/humidity sensor (bit-banged)
+        ├── hc_sr04-driver.c/.h         # HC-SR04 ultrasonic distance sensor
+        └── ssd1306-i2c-driver.c/.h     # SSD1306 OLED display via I2C (no HAL)
 
-Tasks/
-├── task_dht22.c/.h → Reads temp/humidity every 1s
-├── task_hcsr04.c/.h → Reads distance every 50ms
-├── task_display.c/.h → Displays distance on OLED
-└── task_command.c/.h → Handles UART commands
+        # FreeRTOS Tasks
+        ├── task_dht22.c/.h             # Periodically reads DHT22 sensor (1s interval)
+        ├── task_hcsr04.c/.h            # Measures distance every 50ms
+        ├── task_display.c/.h           # Displays sensor data on OLED
+        └── task_command.c/.h           # Handles UART-based command input
+
 
 
 ---
