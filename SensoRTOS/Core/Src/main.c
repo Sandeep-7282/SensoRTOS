@@ -1,7 +1,7 @@
-//#include "stm32f1xx_hal.h"
+
 #include "cmsis_os.h"
 #include "systemclock_config.h"
-#include "task_uart.h"  // Your task header
+#include "task_uart.h"
 #include "uart-driver.h"
 #include "task_dht22.h"
 #include "task_hcsr04.h"
@@ -33,7 +33,6 @@ int main(void)
     // Inside main() after FreeRTOS kernel init and other tasks
     osThreadDef(Display_Task, Display_Task, osPriorityNormal, 1, 512);
     displayTaskHandle = osThreadCreate(osThread(Display_Task), NULL);
-
 
     osKernelStart();  // Only this is needed to start scheduler
 
